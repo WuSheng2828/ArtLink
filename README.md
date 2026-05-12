@@ -51,22 +51,31 @@
 
 ### 安装步骤
 
+#### 方式一：使用便携 Python 环境（推荐，无需安装 Python）
+
+1. **下载便携 Python 包**
+   - 前往 [Releases 页面](https://github.com/WuSheng2828/ArtLink/releases)
+   - 下载 `python311.zip`（由作者打包好，解压直接用）
+
+2. **解压便携包**
+   - 将 `python311.zip` 解压到本项目根目录
+   - 解压后应看到 `Python311/python.exe`
+
+#### 方式二：自己配置 Python 环境
+
 1. **下载 Python 便携包**
    - 前往 [Python 3.12 下载页面](https://www.python.org/downloads/release/python-3120/)
    - 下载 `Windows embeddable package (64-bit)`
 
 2. **解压并配置**
    - 解压到项目根目录的 `Python311` 文件夹
-   - 编辑 `Python311/python312._pth`，在文件末尾添加一行 `Lib\site-packages`
+   - 编辑 `Python311/python312._pth`，在文件末尾添加一行 `Lib\site-packages` 并保存
+
+#### 通用步骤
 
 3. **安装依赖**
    - 双击 `run.bat`，程序会自动安装 `flask`, `requests`, `websocket-client`
-
-4. **启动**
-   - 双击 `run.bat`，浏览器将自动打开 `http://127.0.0.1:5000`
-
----
-
+   - 若自动安装失败，可手动进入 `Python311` 目录执行：
 ## 使用
 
 ### 群聊指令（需 @机器人）
