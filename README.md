@@ -76,6 +76,12 @@
 3. **安装依赖**
    - 双击 `run.bat`，程序会自动安装 `flask`, `requests`, `websocket-client`
    - 若自动安装失败，可手动进入 `Python311` 目录执行：
+   - 
+4. **启动**
+- 双击 `run.bat`，浏览器将自动打开 `http://127.0.0.1:5000`
+
+---
+
 ## 使用
 
 ### 群聊指令（需 @机器人）
@@ -98,7 +104,7 @@
 
 ## 获取帮助
 
-- 查看 [详细功能说明](功能说明.md) 或仓库内的 `ArtLink功能说明&更新日志.txt`
+- 查看仓库内的 `ArtLink功能说明&更新日志.txt`
 - 提交 [Issues](https://github.com/WuSheng2828/ArtLink/issues)
 
 ## 许可证
