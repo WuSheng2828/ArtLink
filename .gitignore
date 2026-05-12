@@ -1,0 +1,16 @@
+# 数据库文件（包含敏感配置，不能公开）
+artlink.db
+
+# 日志文件（运行产生，不需要上传）
+artlink.log
+artlink.log.*
+
+# 临时图片文件夹（运行产生，不需要上传）
+temp_images/
+
+# Python 缓存文件
+__pycache__/
+*.pyc
+
+# 便携 Python 环境（太大，用户自己下载）
+Python311/
