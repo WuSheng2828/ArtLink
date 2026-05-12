@@ -1,6 +1,20 @@
 # ArtLink - ComfyUI QQ 机器人
 
-用 QQ 控制家里的 ComfyUI 生图。支持文字生图、图片反推、多图工作流，单文件部署，可视化管理。
+通过 QQ（NapCat）远程控制 ComfyUI 进行 AI 绘图和图片反推。
+
+---
+
+## 项目简介
+
+ArtLink 是一个单文件 Python 脚本，将 ComfyUI 连接到 QQ（NapCat），让你在家或在外都能用 QQ 控制 AI 绘图。支持文字生图、图片反推、多图工作流，所有配置可在 Web 后台可视化完成。
+
+---
+
+## 为什么需要这个？
+
+- 人在外面，想用家里的显卡生图
+- 不想每次远程登录，打开 QQ 就能操作
+- 给群里的小伙伴一起用，支持多层权限管理和次数限制
 
 ---
 
@@ -76,6 +90,7 @@
 3. **安装依赖**
    - 双击 `run.bat`，程序会自动安装 `flask`, `requests`, `websocket-client`
    - 若自动安装失败，可手动进入 `Python311` 目录执行：
+   - python -m pip install flask requests websocket-client
   
    - 
 4. **启动**
@@ -100,6 +115,13 @@
 - `管理`：进入管理菜单
 - `状态`：查看系统状态
 - `过滤开` / `过滤关`：控制过滤
+
+---
+
+## 项目地址
+
+- GitHub 仓库：[https://github.com/WuSheng2828/ArtLink](https://github.com/WuSheng2828/ArtLink)
+- Releases（便携 Python 环境下载）：[https://github.com/WuSheng2828/ArtLink/releases](https://github.com/WuSheng2828/ArtLink/releases)
 
 ---
 
