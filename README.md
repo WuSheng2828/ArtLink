@@ -1,6 +1,6 @@
 # ArtLink - ComfyUI QQ 机器人
 
-通过 QQ（NapCat）远程控制 ComfyUI 进行 AI 绘图和图片反推。
+用 QQ 控制家里的 ComfyUI 生图。支持文字生图、图片反推、多图工作流，单文件部署，可视化管理。
 
 ---
 
@@ -76,6 +76,7 @@
 3. **安装依赖**
    - 双击 `run.bat`，程序会自动安装 `flask`, `requests`, `websocket-client`
    - 若自动安装失败，可手动进入 `Python311` 目录执行：
+  
    - 
 4. **启动**
 - 双击 `run.bat`，浏览器将自动打开 `http://127.0.0.1:5000`
