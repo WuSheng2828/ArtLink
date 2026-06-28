@@ -1,0 +1,212 @@
+╔══════════════════════════════════════════════════════════════╗
+║                ArtLink 随机词库系统说明 v2.0                  ║
+║             36分类 · 标签码 · 标签关系引擎                    ║
+╚══════════════════════════════════════════════════════════════╝
+
+████████████████████████████████████████████████████████████████
+                    上段 · 给人类管理员
+████████████████████████████████████████████████████████████████
+
+【这是啥】
+随机词库是「随便来点」功能的后台。词库存放在 wordbank.json 里，
+程序每次随机从里面挑词组合成一条提示词去生图。
+v2.0 起使用「标签码」替代旧的 sfw/nsfw 分类，支持 36 个分类。
+
+【文件结构】
+项目根目录/
+├── wordbank.json                      ← 最终词库（程序只读这个）
+├── wordbank_filter.py                 ← 过滤规则框架（分类排序+对立检测）
+├── wordbank_filter_config.json        ← 规则配置（关系开关+关系列表+标签码）
+├── wordbank_parts_v2/                 ← 词库分块文件夹
+│   ├── 01_基础信息类.txt ~ 10_艺术交互类.txt
+│   ├── merge_wordbank_v2.py           ← 合并脚本
+│   └── merge_wordbank_v2.bat          ← 双击合并
+├── wordbank_editor.py                 ← 可视化编辑器主程序
+├── wordbank_backups/                  ← 自动备份文件夹
+├── 合并代码操作文件夹/wordbank_editor 文件分块/  ← 编辑器分块
+└── run_editor.bat                     ← 启动编辑器
+
+【36分类速查】
+一大类    1   角色数量    1~1     1girl / solo / 2girls
+一大类    2   年龄体型    1~2     loli / adult / chibi
+一大类    3   性别种族    1~1     fox girl / elf / human
+二大类    4   头发颜色    1~1     white hair / blonde hair
+二大类    5   发型        2~3     long hair / twintails / bangs
+二大类    6   眼睛特征    2~3     blue eyes / slit pupils
+二大类    7   面部特征    2~3     blush / smile / mole under eye
+三大类    8   胸部特征    2~3     medium breasts / cleavage
+三大类    9   身体躯干    1~2     slim / curvy / navel
+三大类   10   耳朵特征    1~2     fox ears / elf ears / cat ears
+三大类   11   尾巴特征    1~2     fox tail / tail / multiple tails
+三大类   12   其他特征    1~2     wings / horns / halo
+四大类   13   服装大类    1~1     kimono / dress / school uniform
+四大类   14   服装细节    2~3     lace / off shoulder / see-through
+四大类   15   下装/腿部   2~3     skirt / thighhighs / pantyhose
+四大类   16   配饰        2~3     hair bow / choker / necklace
+五大类   17   手持物      1~2     holding phone / wand / sword
+五大类   18   环境道具    1~2     bed / window / lanterns
+六大类   19   身体姿势    1~1     standing / sitting / wariza
+六大类   20   手部动作    2~3     waving / holding hands / v sign
+六大类   21   头部动作    1~1     looking at viewer / head tilt
+六大类   22   表情情绪    2~3     smile / embarrassed / seductive smile
+六大类   23   性感状态    SFW跳过   seductive / in heat / oestrous
+七大类   24   暴露程度    SFW跳过   nude / topless / spread legs
+七大类   25   私密部位    SFW跳过   pussy / penis / nipples
+七大类   26   性行为      SFW跳过   sex / masturbation / kissing
+七大类   27   体液        SFW跳过   cum / pussy juice / sweat
+八大类   28   环境地点    1~2     bedroom / beach / classroom
+八大类   29   自然元素    2~3     cherry blossoms / snow / stars
+八大类   30   时间光线    1~1     night / sunset / golden hour
+八大类   31   背景风格    1~1     simple background / bokeh
+九大类   32   取景范围    1~1     close-up / full body / portrait
+九大类   33   拍摄视角    1~1     from below / from front / pov
+九大类   34   特殊效果    1~2     depth of field / lens flare / bokeh
+十大类   35   艺术风格    1~1     anime style / watercolor / realistic
+十大类   36   场景氛围    1~2     dreamy / cozy / sensual
+
+【标签码系统】
+每条词不再只有 sfw/nsfw，而是携带多个标签码，例如：
+  1girl → [sfw, 女性, 人类]
+  fox ears → [sfw, 兽耳, 狐耳]
+  nude → [nsfw, 全裸]
+  penis → [nsfw, 男性, 生殖器]
+
+SFW/NSFW 判断：看标签码中是否包含 sfw 或 nsfw。
+全部标签码可在编辑器中查看和管理。
+
+【操作流程】
+1. 在 wordbank_parts_v2 里放 .txt 分块文件
+2. 双击 merge_wordbank_v2.bat → 增量合并到 wordbank.json
+3. 重启 ArtLink 或点击「刷新缓存」
+4. 打开编辑器 http://127.0.0.1:19876 进行可视化编辑
+5. 后台 http://127.0.0.1:5000 → 「随便来点」→ 开启开关测试
+
+【TXT 文件格式 v2】
+第一行：大类注释  # 大类一：基础信息类
+第二行：ID 范围    # id:1-3
+然后分类定义：    # 分类1：角色数量 (pick_min:1, pick_max:1)
+词条：            english_tag,中文翻译,[标签码1,标签码2,标签码3]
+
+示例：
+# 大类一：基础信息类
+# id:1-3
+# 分类1：角色数量 (pick_min:1, pick_max:1)
+1girl,一个女孩,[sfw,女性,人类]
+1boy,一个男孩,[sfw,男性,人类]
+solo,单人,[sfw,单人]
+
+# 分类3：性别种族 (pick_min:1, pick_max:1)
+fox girl,狐娘,[sfw,女性,狐娘]
+elf,精灵,[sfw,精灵]
+
+
+████████████████████████████████████████████████████████████████
+                       分割线
+████████████████████████████████████████████████████████████████
+
+                    下段 · 给AI维护者
+████████████████████████████████████████████████████████████████
+
+【系统概述】
+随机词库是 ArtLink「随便来点」功能的支撑。v2.0 核心变化：
+- 从 27 分类扩展为 36 分类（10 大类）
+- 词条格式从 {text, zh, type} 改为 {text, zh, tags: [...]}
+- 标签码体系替代 type 字段，支持多维度标记
+- 过滤规则从硬编码改为配置文件驱动 + 标签关系引擎
+
+【核心文件】
+wordbank.json     — 词库数据（36分类，~1600条词）
+wordbank_filter.py — 过滤规则（框架版：分类排序+对立检测+吸引权重）
+wordbank_filter_config.json — 规则配置文件（排序/关系开关/关系列表/标签码全集）
+
+【标签码全集（约75个）】
+等级: sfw, nsfw
+性别: 女性, 男性, 非二元
+年龄: 青少年, 成人, 成熟
+种族: 人类, 狐娘, 猫娘, 兔娘, 其他兽娘, 精灵, 恶魔, 天使, 机械, 怪物, 非人形
+身体: 小胸, 中胸, 大胸, 肌肉, 兽耳, 狐耳, 猫耳, 兔耳, 犬耳, 特殊耳, 精灵耳, 尾巴, 翅膀, 角, 胸部, 长发, 短发, 全身, 上半身, 特写, 单人
+生殖器: 生殖器
+化妆: 化妆
+服装: 服装, 上装, 下装, 配饰, 鞋子, 赤脚, 袜子, 内衣, 泳装, 暴露, 全裸
+性: 性暗示, 性行为, 自慰, 体液
+姿势: 姿势, 暴露姿势
+面部: 表情, 脸红
+场景: 室内, 室外, 自然, 城市, 幻想, 私密空间, 公共场所
+时间: 白天, 夜晚
+情绪: 可爱, 性感, 端庄
+风格: 写实, 二次元, 插画, 水墨, 胶片, Q版
+
+【标签关系引擎】
+配置位置: wordbank_filter_config.json → tag_relations 数组
+关系类型:
+  对立 — 两标签同时出现时触发重抽（强度: 弱/中/强）
+  吸引 — 前面选了某标签后，后续相关标签加权（强×3 / 中×2 / 弱×1.5）
+每条关系有独立 enabled 开关，可在编辑器中单独启停。
+
+【TXT解析规则 v2】
+- # 大类开头 → 跳过
+- # id: 开头 → 跳过
+- # 分类N：名称 (pick_min:X, pick_max:Y) → 新分类
+- 支持 SFW/NSFW 不同取值格式: pick_min:0:sfw / 2~3:nsfw
+- 数据行按逗号分割: text,zh,[tag1,tag2,...]
+- 跳过含"指令""说明""readme"的非词库文件
+
+【合并逻辑 v2】
+merge_wordbank_v2.py 按文件名排序，增量合并。
+已存在的词条（同分类+同text）跳过，不重复添加。
+首次运行创建新词库，后续运行只追加新词条。
+
+
+████████████████████████████████████████████████████████████████
+             AI词库补充指令 · 复制这段发给AI
+████████████████████████████████████████████████████████████████
+
+【你的任务】
+你是 ArtLink 随机词库的补充助手。请按以下规范输出 TXT 格式词库内容。
+
+【输出格式】
+# 大类X：大类名称
+# id:X-Y
+# 分类N：分类名称 (pick_min:X, pick_max:Y)
+english_tag,中文翻译,[标签码1,标签码2]
+
+【标签码全集】
+sfw, nsfw, 女性, 男性, 非二元, 青少年, 成人, 成熟,
+人类, 狐娘, 猫娘, 兔娘, 其他兽娘, 精灵, 恶魔, 天使, 机械, 怪物, 非人形,
+小胸, 中胸, 大胸, 肌肉, 兽耳, 狐耳, 猫耳, 兔耳, 犬耳, 特殊耳, 精灵耳, 尾巴, 翅膀, 角,
+胸部, 长发, 短发, 全身, 上半身, 特写, 单人,
+生殖器, 化妆, 服装, 上装, 下装, 配饰, 鞋子, 赤脚, 袜子, 内衣, 泳装, 暴露, 全裸,
+性暗示, 性行为, 自慰, 体液, 姿势, 暴露姿势, 表情, 脸红,
+室内, 室外, 自然, 城市, 幻想, 私密空间, 公共场所, 白天, 夜晚,
+可爱, 性感, 端庄, 写实, 二次元, 插画, 水墨, 胶片, Q版
+
+【打标规则】
+1. 每条必打 sfw 或 nsfw
+2. 涉及性别的打 女性/男性，中性不打
+3. loli/shota→青少年, adult→成人, milf→成熟
+4. 狐耳打 兽耳+狐耳，只有 fox girl 打 狐娘
+5. 各种胸打 胸部+中胸/大胸/小胸
+6. 默认无服装标签=穿衣；内衣/泳装/全裸才有对应标签
+7. 衣服类打 服装+上装/下装；袜子打 下装+袜子
+8. 暴露是中性词，配合 sfw=普通露出(锁骨/露肩)，配合 nsfw=性感露出
+9. 生殖器打 生殖器+对应性别
+10. standing/sitting→姿势；spread legs→暴露姿势+nsfw
+11. cute→可爱；sexy→性感；elegant→端庄
+
+【示例】
+# 大类一：基础信息类
+# id:1-3
+# 分类1：角色数量 (pick_min:1, pick_max:1)
+1girl,一个女孩,[sfw,女性,人类]
+1boy,一个男孩,[sfw,男性,人类]
+solo,单人,[sfw,单人]
+
+# 分类3：性别种族 (pick_min:1, pick_max:1)
+fox girl,狐娘,[sfw,女性,狐娘]
+cat girl,猫娘,[sfw,女性,猫娘]
+elf,精灵,[sfw,精灵]
+
+【你的输出要求】
+- 只输出 TXT 内容，不要解释
+- 每分类 10~30 条
+- 按我指定的大类和分类输出

@@ -1,0 +1,123 @@
+ArtLink 项目文件夹/
+│
+├── 📄 run.bat
+│   启动脚本。双击自动检测便携/系统 Python 环境 → 启动 main.py
+│   → 3秒后打开浏览器 http://127.0.0.1:5000
+│   【手动创建，不自动生成】
+│
+├── 📄 main.py
+│   主程序（~4800行）。由 12 个分块 txt 合并而成
+│   【运行 python main.py 或双击 run.bat】
+│   【修改方式：改对应的 part*.txt → 双击 merge.bat 重新生成】
+│
+├── 🗄️ artlink.db
+│   SQLite 数据库。首次启动自动创建，存储白名单/黑名单/历史/配置等
+│   【自动生成，无需手动修改】
+│
+├── 📝 artlink.log
+│   运行日志。记录所有操作，单文件最大 5MB，保留最近 3 个备份
+│   【自动生成，排查问题时查看】
+│
+├── 📁 workflows/
+│   工作流文件夹。存放 ComfyUI 的 .json 工作流文件
+│   【首次启动自动创建，用户手动放入工作流文件】
+│
+├── 📁 temp_images/
+│   临时图片目录。ComfyUI 生成的图片先存这里，发送到 QQ 后删除
+│   【自动创建和管理】
+│
+├── 📁 temp_video/
+│   临时视频目录。ComfyUI 生成的视频/GIF 先存这里，发送到 QQ 后删除
+│   【自动创建和管理】
+│
+├── 📁 Python311/
+│   便携 Python 环境（可选）。放这里就不用装系统 Python
+│   【用户自行下载解压】
+│
+│
+│   ═══════════════ 词库系统 ═══════════════
+│
+├── 📄 wordbank.json
+│   随机词库数据。36 分类，~1600 条词，每词有英文/中文/标签码
+│   【程序读取 + 编辑器读写】
+│   【生成方式1：wordbank_parts_v2/ 合并脚本】
+│   【生成方式2：词库编辑器 保存全部 按钮】
+│
+├── 📄 wordbank_filter.py
+│   过滤规则框架。分类排序 + 标签对立检测 + 吸引权重加载
+│   【main.py 导入调用，编辑器不改它】
+│
+├── 📄 wordbank_filter_config.json
+│   规则配置文件。包含：分类排序列表、关系引擎开关、标签关系数组、
+│   每条关系的 enabled 独立开关、标签码全集
+│   【程序读取 + 编辑器规则管理选项卡读写】
+│
+├── 📄 wordbank_editor.py
+│   词库可视化编辑器主程序。端口 19876，由 4 个分块 txt 合并
+│   【双击 run_editor.bat 启动】
+│   【修改方式：改对应的 editor_part*.txt → 双击 merge_editor.bat】
+│
+├── 📄 run_editor.bat
+│   启动词库编辑器的脚本
+│   【双击运行】
+│
+├── 📁 wordbank_backups/
+│   词库自动备份文件夹。每次保存词库时自动备份旧版本
+│   文件名格式：wordbank_YYYYMMDD_HHMMSS.json，最多保留 10 个
+│   【自动创建，误操作可从此恢复】
+│
+├── 📁 wordbank_parts_v2/
+│   词库分块文件夹。包含 10 个大类 txt + 合并脚本
+│   ├── 01_基础信息类.txt（分类1-3）
+│   ├── 02_外貌特征类.txt（分类4-7）
+│   ├── 03_身体特征类.txt（分类8-12）
+│   ├── 04_服装穿戴类.txt（分类13-16）
+│   ├── 05_道具物品类.txt（分类17-18）
+│   ├── 06_姿态动作类.txt（分类19-23）
+│   ├── 07_性感暴露类.txt（分类24-27，仅NSFW）
+│   ├── 08_场景背景类.txt（分类28-31）
+│   ├── 09_镜头构图类.txt（分类29-34）
+│   ├── 10_艺术交互类.txt（分类35-36）
+│   ├── merge_wordbank_v2.py（合并逻辑脚本）
+│   └── merge_wordbank_v2.bat（双击合并）
+
+
+│   ═══════════ 主文件分块（合并代码操作文件夹/） ═══════════
+│
+├── 📁 合并代码操作文件夹/
+│   ├── part1_header_db.txt             文件头、环境检测、日志、数据库初始化
+│   ├── part2a_flask_css.txt            Flask应用 + 管理后台 CSS 样式
+│   ├── part2b_flask_body.txt           管理后台 HTML 主体（选项卡+弹窗）
+│   ├── part2c_flask_js.txt             管理后台 JavaScript + ADMIN_HTML 拼接
+│   ├── part3_api_routes.txt            所有 Flask API 路由
+│   ├── part4_download_comfyui.txt      QQ图片下载、ComfyUI交互、消息撤回发送
+│   ├── part5_help_utils.txt            帮助信息、全局变量、随机词库、次数检查
+│   ├── part6_admin_menu.txt            管理员菜单状态机
+│   ├── part7a_quick_cmds.txt           管理员快捷指令
+│   ├── part7b_handle_msg.txt           核心消息处理 handle_message
+│   ├── part7c_helpers.txt              视频询问、任务提交、绘图模式生图
+│   ├── part8_submit_main.txt           提交任务函数 + 结果监控 + WebSocket + 主入口
+│   ├── merge.bat                       双击合并以上12块 → 输出 main.py
+│   │
+│   └── 📁 wordbank_editor 文件分块/     ← 编辑器分块（4块）
+│       ├── editor_part1_backend.txt    Python后端（import/路径/load/save/路由）
+│       ├── editor_part2_css.txt        CSS样式（完整 <style> 标签内容）
+│       ├── editor_part3_html.txt       HTML结构（<body> 全部内容）
+│       ├── editor_part4_js.txt         JavaScript脚本（全部交互逻辑）
+│       ├── merge_editor.bat            双击合并以上4块 → 输出 wordbank_editor.py
+│       └── 分块说明.txt               分块内容说明文档
+
+
+│   ═══════════════ 文档 ═══════════════
+│
+├── 📄 ArtLink功能说明&更新日志.txt
+│   全功能说明 + 完整版本更新日志
+│
+├── 📄 词库系统使用说明.txt
+│   词库系统的完整说明（给人看的上段 + 给AI看的下段 + AI指令模板）
+│
+├── 📄 词库编辑器说明文档.txt
+│   词库可视化编辑器的使用说明（给人看 + 给AI看 + 分块说明）
+│
+└── 📄 全部文件一览.txt（本文件）
+    项目所有文件的简介索引

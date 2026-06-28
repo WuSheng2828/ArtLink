@@ -29,7 +29,7 @@ if exist "%~dp0Python311\python.exe" (
 )
 
 echo 正在启动 ArtLink...
-start /b "" %PYTHON% main.py
+start /b "" "%PYTHON%" "main.py"
 timeout /t 3 /nobreak >nul
 start http://127.0.0.1:5000
 echo 浏览器已打开

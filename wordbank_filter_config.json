@@ -1,0 +1,293 @@
+{
+  "all_tags": [
+    "sfw",
+    "nsfw",
+    "女性",
+    "男性",
+    "非二元",
+    "青少年",
+    "成人",
+    "成熟",
+    "人类",
+    "狐娘",
+    "猫娘",
+    "兔娘",
+    "其他兽娘",
+    "精灵",
+    "恶魔",
+    "天使",
+    "机械",
+    "怪物",
+    "非人形",
+    "小胸",
+    "中胸",
+    "大胸",
+    "肌肉",
+    "兽耳",
+    "狐耳",
+    "猫耳",
+    "兔耳",
+    "犬耳",
+    "特殊耳",
+    "精灵耳",
+    "尾巴",
+    "翅膀",
+    "角",
+    "胸部",
+    "长发",
+    "短发",
+    "全身",
+    "上半身",
+    "特写",
+    "单人",
+    "生殖器",
+    "化妆",
+    "服装",
+    "上装",
+    "下装",
+    "配饰",
+    "鞋子",
+    "赤脚",
+    "袜子",
+    "内衣",
+    "泳装",
+    "暴露",
+    "全裸",
+    "性暗示",
+    "性行为",
+    "自慰",
+    "体液",
+    "姿势",
+    "暴露姿势",
+    "表情",
+    "脸红",
+    "室内",
+    "室外",
+    "自然",
+    "城市",
+    "幻想",
+    "私密空间",
+    "公共场所",
+    "白天",
+    "夜晚",
+    "可爱",
+    "性感",
+    "端庄",
+    "写实",
+    "二次元",
+    "插画",
+    "水墨",
+    "胶片",
+    "Q版"
+  ],
+  "category_order": true,
+  "category_order_list": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36
+  ],
+  "tag_relations": [
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "男性",
+      "tag_b": "大胸"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "青少年",
+      "tag_b": "性行为"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "青少年",
+      "tag_b": "全裸"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "Q版",
+      "tag_b": "性行为"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "Q版",
+      "tag_b": "全裸"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "强",
+      "tag_a": "狐娘",
+      "tag_b": "兽耳"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "强",
+      "tag_a": "狐娘",
+      "tag_b": "尾巴"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "强",
+      "tag_a": "猫娘",
+      "tag_b": "猫耳"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "强",
+      "tag_a": "猫娘",
+      "tag_b": "尾巴"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "强",
+      "tag_a": "兔娘",
+      "tag_b": "兔耳"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "强",
+      "tag_a": "精灵",
+      "tag_b": "精灵耳"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "强",
+      "tag_a": "精灵",
+      "tag_b": "特殊耳"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "中",
+      "tag_a": "全裸",
+      "tag_b": "私密空间"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "全裸",
+      "tag_b": "公共场所"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "泳装",
+      "tag_b": "雪地"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "长发",
+      "tag_b": "短发"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "全身",
+      "tag_b": "特写"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "弱",
+      "tag_a": "全身",
+      "tag_b": "上半身"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "弱",
+      "tag_a": "上半身",
+      "tag_b": "特写"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "赤脚",
+      "tag_b": "鞋子"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "弱",
+      "tag_a": "可爱",
+      "tag_b": "性感"
+    },
+    {
+      "enabled": true,
+      "relation": "吸引",
+      "strength": "中",
+      "tag_a": "性感",
+      "tag_b": "暴露姿势"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "内衣",
+      "tag_b": "公共场所"
+    },
+    {
+      "enabled": true,
+      "relation": "对立",
+      "strength": "强",
+      "tag_a": "全裸",
+      "tag_b": "服装"
+    }
+  ],
+  "tag_relations_enabled": true
+}
